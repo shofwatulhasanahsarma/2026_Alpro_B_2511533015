@@ -1,0 +1,4 @@
+panjang_3015 = input ('Masukkan nilai panjang: ' )
+lebar_3015 = input ('Masukkan nilai lebar: ')
+luas_3015 = int(panjang_3015)  * int (lebar_3015)
+print ("Luas =", luas_3015)

@@ -1,0 +1,12 @@
+nama_3015 = "Shofwatul Hasanah Sarma"
+jenis_kelamin_3015 = 'Perempuan'
+alamat_3015 = """
+    Kampus Unand
+    kec.pauh
+    kota Padang
+"""
+agama_3015 = 'islam'
+print("Nama saya adalah: ", nama_3015)
+print("jenis kelamin saya adalah: ", jenis_kelamin_3015)
+print("Alamat saya adalah: ", alamat_3015)
+print("Agama saya adalah: ", agama_3015)
