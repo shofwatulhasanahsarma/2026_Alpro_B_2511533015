@@ -1,0 +1,40 @@
+angka1_3015 = int(input("Input angka-1: "))
+angka2_3015 = int(input("Input angka-2: "))
+
+#Lebih besar dari
+hasil_3015 = angka1_3015 > angka2_3015
+print("\nOperator lebih besar dari")
+print("angka1_3015 > angka2_3015 =", hasil_3015)
+
+#Lebih kecil dari
+hasil_3015 = angka1_3015 < angka2_3015
+print("\nOperator lebih kecil dari")
+print("angka1_3015 < angka2_3015 =", hasil_3015)
+
+#Lebih besar dari atau sama dengan
+hasil_3015 = angka1_3015 >= angka2_3015
+print("\nOperator lebih besar dari atau sama dengan")
+print("angka1_3015 >= angka2_3015 =", hasil_3015)
+
+#Lebih kecil dari atau sama dengan
+hasil_3015 = angka1_3015 <= angka2_3015
+print("\nOperator lebih kecil dari atau sama dengan")
+print("angka1_3015 <= angka2_3015 =", hasil_3015)
+
+#Sama dengan
+hasil_3015 = angka1_3015 == angka2_3015
+print("\nOperator sama dengan")
+print("angka1_3015 == angka2_3015 =", hasil_3015)
+
+#Tidak sama dengan
+hasil_3015 = angka1_3015 != angka2_3015
+print("\nOperator tidak sama dengan")
+print("angka1_3015 != angka2_3015 =", hasil_3015)
+
+#Tambahan: perbandingan berantai dalam python
+hasil_3015 = 0 < angka1_3015 < 100
+print("\nOperator perbandingan berantai")
+print("0 < angka1_3015 < 100 =", hasil_3015)
+
+hasil_3015 = 0 < angka2_3015 < 100
+print("0 < angka2_3015 < 100 =", hasil_3015)
