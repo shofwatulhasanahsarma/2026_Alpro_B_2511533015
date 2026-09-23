@@ -1,0 +1,197 @@
+
+"""
+=====================================================================
+ STUDI KASUS: SISTEM SIMULASI TRANSAKSI DAN VALIDASI AKSES TOKO
+=====================================================================
+Catatan penting:
+- Semua nama variabel diakhiri dengan 4 digit terakhir NIM.
+- Pada contoh ini digunakan akhiran "1234". GANTI seluruh akhiran
+  "_3015" pada kode ini dengan 4 digit terakhir NIM Anda sendiri
+  sebelum dikumpulkan (misalnya cari-ganti "_3015" -> "_5678").
+=====================================================================
+"""
+ 
+# =====================================================================
+# 1. INPUT DATA PELANGGAN DAN TRANSAKSI
+# =====================================================================
+print("=== SISTEM TRANSAKSI TOKO ===")
+print()
+ 
+nama_3015 = input("Masukkan Nama Pelanggan : ")                      # tipe data: str
+status_3015 = input("Masukkan Status Pelanggan (member/nonmember) : ").strip().lower()  # str
+total_belanja_3015 = float(input("Masukkan Total Belanja : "))        # tipe data: float
+jumlah_barang_3015 = int(input("Masukkan Jumlah Barang : "))          # tipe data: int
+kode_promo_3015 = input("Masukkan Kode Promo : ").strip().upper()     # str
+ 
+# Daftar kode promo yang tersedia di toko
+daftar_promo_3015 = ["HEMAT10", "HEMAT20", "GRATISONGKIR"]
+ 
+# =====================================================================
+# 2. OPERATOR PERBANDINGAN (comparison operator) -> menghasilkan True/False
+# =====================================================================
+syarat_belanja_3015 = total_belanja_3015 >= 200000   # apakah belanja >= Rp200.000
+syarat_barang_3015 = jumlah_barang_3015 >= 3         # apakah jumlah barang >= 3
+is_member_3015 = status_3015 == "member"             # apakah pelanggan member
+ 
+# =====================================================================
+# 3. OPERATOR LOGIKA (and, or, not) -> gabungan minimal dua kondisi
+# =====================================================================
+# Diskon member khusus: harus member DAN memenuhi syarat belanja minimum
+diskon_member_3015 = is_member_3015 and syarat_belanja_3015
+ 
+# Promo tambahan: memenuhi syarat jumlah barang ATAU sudah dapat diskon member
+promo_tambahan_3015 = syarat_barang_3015 or diskon_member_3015
+ 
+# Menandai pelanggan yang BUKAN member menggunakan operator not
+bukan_member_3015 = not is_member_3015
+ 
+# =====================================================================
+# 4. OPERATOR KEANGGOTAAN (membership: in / not in)
+# =====================================================================
+promo_tersedia_3015 = kode_promo_3015 in daftar_promo_3015        # True jika kode ada di daftar
+promo_tidak_tersedia_3015 = kode_promo_3015 not in daftar_promo_3015  # kebalikannya
+ 
+# Pelanggan mendapatkan promo jika kode promo tersedia DAN memenuhi salah satu syarat
+mendapatkan_promo_3015 = promo_tersedia_3015 and (diskon_member_3015 or syarat_barang_3015)
+ 
+# =====================================================================
+# 5. OPERATOR ARITMATIKA (+, -, *, /, %)
+# =====================================================================
+persen_diskon_3015 = 0.1 if diskon_member_3015 else 0          # persentase diskon (10%)
+diskon_rupiah_3015 = total_belanja_3015 * persen_diskon_3015    # perkalian -> nilai diskon
+total_pembayaran_3015 = total_belanja_3015 - diskon_rupiah_3015 # pengurangan -> total setelah diskon
+rata_rata_harga_3015 = total_belanja_3015 / jumlah_barang_3015  # pembagian -> harga rata-rata barang
+sisa_bagi_3015 = jumlah_barang_3015 % 3                          # modulus -> sisa pembagian jumlah barang oleh 3
+ 
+# =====================================================================
+# 6. OPERATOR PENUGASAN (assignment & augmented assignment)
+# =====================================================================
+poin_3015 = 0
+poin_3015 += jumlah_barang_3015 * 10     # augmented assignment (+=): poin bertambah dari jumlah barang
+ 
+if mendapatkan_promo_3015:
+    total_pembayaran_3015 -= 5000        # augmented assignment (-=): potongan tambahan jika dapat promo
+ 
+if is_member_3015:
+    poin_3015 *= 2                       # augmented assignment (*=): poin member digandakan
+ 
+# =====================================================================
+# 7. OPERATOR IDENTITAS (is / is not)
+# =====================================================================
+# Dua objek list dengan ISI SAMA tetapi merupakan objek berbeda di memori
+list_a_3015 = ["HEMAT10"]
+list_b_3015 = ["HEMAT10"]
+ 
+cek_is_3015 = list_a_3015 is list_b_3015           # False -> objek berbeda walau isinya sama
+cek_is_not_3015 = list_a_3015 is not list_b_3015   # True  -> karena identitas objek berbeda
+cek_nilai_sama_3015 = list_a_3015 == list_b_3015   # True  -> == membandingkan ISI, bukan identitas
+ 
+# =====================================================================
+# 8. OPERATOR BITWISE (&, |, ^, <<)
+# =====================================================================
+# Representasi bit sesuai tabel:
+# 0001 = member | 0010 = belanja>=200000 | 0100 = barang>=3 | 1000 = promo tersedia
+bit_member_3015 = 0b0001 if is_member_3015 else 0
+bit_belanja_3015 = 0b0010 if syarat_belanja_3015 else 0
+bit_barang_3015 = 0b0100 if syarat_barang_3015 else 0
+bit_promo_3015 = 0b1000 if promo_tersedia_3015 else 0
+ 
+# OR (|) -> menggabungkan seluruh kondisi menjadi satu kode status
+kode_status_3015 = bit_member_3015 | bit_belanja_3015 | bit_barang_3015 | bit_promo_3015
+ 
+# AND (&) -> memeriksa apakah bit tertentu aktif pada kode status
+cek_member_bit_3015 = kode_status_3015 & 0b0001   # cek bit member
+cek_promo_bit_3015 = kode_status_3015 & 0b1000    # cek bit promo tersedia
+ 
+# XOR (^) -> membandingkan perbedaan status terhadap kode referensi
+kode_referensi_3015 = 0b1011
+perbedaan_status_3015 = kode_status_3015 ^ kode_referensi_3015
+ 
+# Bonus: SHIFT (<<) -> menggeser bit kode status ke kiri 1 posisi
+kode_shift_3015 = kode_status_3015 << 1
+ 
+# Hak akses pelanggan ditentukan dari hasil pemeriksaan bit
+member_access_3015 = bool(cek_member_bit_3015)
+promo_access_3015 = bool(cek_promo_bit_3015)
+free_shipping_access_3015 = bool(kode_status_3015 & 0b1000) and (kode_promo_3015 == "GRATISONGKIR")
+ 
+# =====================================================================
+# 9. OUTPUT / TAMPILAN HASIL PROGRAM
+# =====================================================================
+print()
+print("=== DATA TRANSAKSI ===")
+print(f"Nama Pelanggan       : {nama_3015}")
+print(f"Status Pelanggan     : {status_3015}")
+print(f"Total Belanja        : Rp{total_belanja_3015:.0f}")
+print(f"Jumlah Barang        : {jumlah_barang_3015}")
+print(f"Kode Promo           : {kode_promo_3015}")
+ 
+print()
+print("=== HASIL VALIDASI ===")
+print(f"Belanja >= Rp200000        : {syarat_belanja_3015}")
+print(f"Jumlah Barang >= 3         : {syarat_barang_3015}")
+print(f"Status Member              : {is_member_3015}")
+print(f"Bukan Member (not)         : {bukan_member_3015}")
+print(f"Kode Promo Tersedia        : {promo_tersedia_3015}")
+print(f"Kode Promo Tidak Tersedia  : {promo_tidak_tersedia_3015}")
+print(f"Mendapatkan Diskon Member  : {diskon_member_3015}")
+print(f"Mendapatkan Promo Tambahan : {promo_tambahan_3015}")
+print(f"Mendapatkan Promo          : {mendapatkan_promo_3015}")
+ 
+print()
+print("=== HASIL PERHITUNGAN ===")
+print(f"Diskon                     : Rp{diskon_rupiah_3015:.0f}")
+print(f"Total Pembayaran           : Rp{total_pembayaran_3015:.0f}")
+print(f"Rata-rata Harga Barang     : Rp{rata_rata_harga_3015:.2f}")
+print(f"Sisa Bagi Barang % 3       : {sisa_bagi_3015}")
+print(f"Poin Pelanggan (final)     : {poin_3015}")
+ 
+print()
+print("=== HAK AKSES PELANGGAN ===")
+print(f"Kode Status (biner)        : {format(kode_status_3015, '04b')}")
+print(f"Kode Status (desimal)      : {kode_status_3015}")
+print(f"Member Access              : {member_access_3015}")
+print(f"Promo Access               : {promo_access_3015}")
+print(f"Free Shipping Access       : {free_shipping_access_3015}")
+ 
+print()
+print("=== OPERASI BITWISE ===")
+print("Kode Status Transaksi (0001|0010|0100|1000 digabung dengan OR)")
+print(f"Kode Biner   : {format(kode_status_3015, '04b')}")
+print(f"Kode Desimal : {kode_status_3015}")
+ 
+print()
+print("Cek Member (AND dengan 0001)")
+print(f"{format(kode_status_3015, '04b')} & 0001")
+print(f"Hasil Biner   : {format(cek_member_bit_3015, '04b')}")
+print(f"Hasil Desimal : {cek_member_bit_3015}")
+ 
+print()
+print("Cek Promo (AND dengan 1000)")
+print(f"{format(kode_status_3015, '04b')} & 1000")
+print(f"Hasil Biner   : {format(cek_promo_bit_3015, '04b')}")
+print(f"Hasil Desimal : {cek_promo_bit_3015}")
+ 
+print()
+print("Perbandingan Status (XOR dengan kode referensi 1011)")
+print(f"Kode Transaksi : {format(kode_status_3015, '04b')}")
+print(f"Kode Referensi : {format(kode_referensi_3015, '04b')}")
+print(f"{format(kode_status_3015, '04b')} ^ {format(kode_referensi_3015, '04b')}")
+print(f"Hasil Biner   : {format(perbedaan_status_3015, '04b')}")
+print(f"Hasil Desimal : {perbedaan_status_3015}")
+ 
+print()
+print("Shift Kiri (<<)")
+print(f"{format(kode_status_3015, '04b')} << 1")
+print(f"Hasil Biner   : {format(kode_shift_3015, '05b')}")
+print(f"Hasil Desimal : {kode_shift_3015}")
+ 
+print()
+print("=== OPERATOR IDENTITAS (is / is not) ===")
+print(f"list_a_3015 is list_b_3015     : {cek_is_3015}  (objek berbeda meski isi sama)")
+print(f"list_a_3015 is not list_b_3015 : {cek_is_not_3015}")
+print(f"list_a_3015 == list_b_3015     : {cek_nilai_sama_3015}  (== membandingkan isi/nilai)")
+ 
+print()
+print("=== SELESAI ===")
+ 
