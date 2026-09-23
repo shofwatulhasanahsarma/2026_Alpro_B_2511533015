@@ -1,0 +1,70 @@
+"""
+Program: Sistem Biodata dan Validasi Kelulusan Praktikan
+Studi Kasus B - Materi Pekan 2
+Seluruh variabel diakhiri dengan 4 digit terakhir NIM: _3015
+"""
+
+from typing import Final
+
+# =========================================================
+# 1. PENERAPAN KONSTANTA (typing.Final)
+# =========================================================
+BATAS_LULUS_3015: Final[float] = 75.0
+
+# =========================================================
+# 2. INPUT DATA - TIPE STRING & CHAR
+# =========================================================
+nama_3015 = input("Masukkan nama praktikan: ")
+
+# Karakter inisial / jenis kelamin -> pakai petik tunggal/ganda (char)
+inisial_3015 = 'A'
+jk_3015 = "L"  # L = Laki-laki, P = Perempuan
+
+# String multiline (triple quotes) untuk alamat
+alamat_3015 = """Jl. Merdeka No. 10
+Kelurahan Sukamaju
+Kota Bandung, Jawa Barat"""
+
+# =========================================================
+# 3. INPUT DATA - TIPE NUMERIK & TYPE CASTING
+# =========================================================
+umur_3015 = int(input("Masukkan umur: "))
+semester_3015 = int(input("Masukkan semester: "))
+nilai_3015 = float(input("Masukkan nilai ujian / skor tes awal praktikum: "))
+
+# Bilangan kompleks sebagai token identifikasi praktikan
+token_id_3015 = 100 + 3j
+
+# =========================================================
+# 4. TIPE DATA BOOLEAN - EVALUASI STATUS KELULUSAN
+# =========================================================
+status_lulus_3015 = nilai_3015 >= BATAS_LULUS_3015  # True / False
+
+# =========================================================
+# 5. PENGECEKAN TIPE DATA (type()) - MENAMPILKAN SEMUA DATA
+# =========================================================
+print("\n===================== HASIL INPUT =====================")
+
+print(f"Nama Praktikan      : {nama_3015}  -> Tipe data: {type(nama_3015)}")
+print(f"Inisial              : {inisial_3015}  -> Tipe data: {type(inisial_3015)}")
+print(f"Jenis Kelamin        : {jk_3015}  -> Tipe data: {type(jk_3015)}")
+print(f"Alamat               :\n{alamat_3015}\n-> Tipe data: {type(alamat_3015)}")
+
+print(f"Umur                 : {umur_3015}  -> Tipe data: {type(umur_3015)}")
+print(f"Semester             : {semester_3015}  -> Tipe data: {type(semester_3015)}")
+print(f"Nilai Ujian          : {nilai_3015}  -> Tipe data: {type(nilai_3015)}")
+
+print(f"Token ID (Complex)   : {token_id_3015}  -> Tipe data: {type(token_id_3015)}")
+
+print(f"Batas Kelulusan      : {BATAS_LULUS_3015}  -> Tipe data: {type(BATAS_LULUS_3015)}")
+print(f"Status Lulus         : {status_lulus_3015}  -> Tipe data: {type(status_lulus_3015)}")
+
+print("=========================================================")
+
+# =========================================================
+# 6. OUTPUT KESIMPULAN
+# =========================================================
+if status_lulus_3015:
+    print(f"\nSelamat {nama_3015}, Anda dinyatakan LULUS praktikum awal!")
+else:
+    print(f"\nMaaf {nama_3015}, Anda dinyatakan TIDAK LULUS praktikum awal.")
