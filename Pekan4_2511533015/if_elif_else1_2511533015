@@ -1,0 +1,15 @@
+umur_3015 = int (input ("Input umur anda: "))
+sim_3015 = input ("Apakah Anda sudah Punya Sim C (y/t): ")[0]
+
+if umur_3015 >= 17 and sim_3015 == 'y':
+    print ("Anda Sudah dewasa dan boleh bawa motor")
+
+elif umur_3015 >= 17 and sim_3015 != 'y':
+    print ("Anda Sudah dewasa tetapi tidak boleh bawa motor")
+
+elif umur_3015 < 17 and sim_3015 == 'y':
+    print ("Anda Belum cukup umur punya SIM")
+
+else:
+    print ("Anda Belum cukup umur dan tidak boleh bawa motor")
+print ("Program Selesai")

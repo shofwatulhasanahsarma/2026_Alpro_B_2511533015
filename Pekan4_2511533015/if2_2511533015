@@ -1,0 +1,8 @@
+ipk_3015= float (input("input IPK Anda = "))
+
+if ipk_3015 > 2.75:
+    print ("Anda Lulus Sangat Memuaskan dengan IPK " +str (ipk_3015))
+
+else:
+    print ("Anda Tidak Lulus")
+print ("Program Selesai")
