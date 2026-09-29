@@ -1,0 +1,99 @@
+import sys
+
+print("=== SISTEM LOKET ALPRO ADVENTURE PARK ===")
+
+# ---------- 1. Input data pengunjung ----------
+nama_3015 = input("Masukkan Nama Pengunjung        : ")
+umur_3015 = int(input("Input umur anda                 : "))
+sim_3015 = input("Apakah Anda Sudah Punya SIM C (y/t): ").strip().lower()[:1]
+
+# ---------- 2. Pemilihan wahana (match-case) ----------
+print("\nPilihan Paket Wahana (1-5):")
+print("  1. Safari Rimba         (Rp 50,000)")
+print("  2. Arung Jeram          (Rp 75,000)")
+print("  3. Motor ATV Ekstrim    (Rp 120,000)")
+print("  4. Roller Coaster Kilat (Rp 100,000)")
+print("  5. All-Access VIP       (Rp 220,000)")
+paket_3015 = int(input("Masukkan nomor paket (1-5)      : "))
+
+match paket_3015:
+    case 1:
+        nama_wahana_3015 = "Wahana Safari Rimba"
+        harga_satuan_3015 = 50000
+    case 2:
+        nama_wahana_3015 = "Wahana Arung Jeram"
+        harga_satuan_3015 = 75000
+    case 3:
+        nama_wahana_3015 = "Wahana Motor ATV Ekstrim"
+        harga_satuan_3015 = 120000
+    case 4:
+        nama_wahana_3015 = "Wahana Roller Coaster Kilat"
+        harga_satuan_3015 = 100000
+    case 5:
+        nama_wahana_3015 = "Wahana All-Access VIP"
+        harga_satuan_3015 = 220000
+    case _:
+        print("Paket wahana tidak valid!")
+        sys.exit()  # hentikan transaksi
+
+# ---------- 3. Jumlah tiket + validasi (if tunggal) ----------
+jumlah_tiket_3015 = int(input("Masukkan jumlah tiket           : "))
+
+if jumlah_tiket_3015 <= 0:
+    print("Peringatan: kuota tiket tidak valid!")
+    sys.exit()  # hentikan transaksi
+
+# ---------- Input member dan promo ----------
+is_member_3015 = input("Apakah Anda member? (y/t)       : ").strip().lower()
+kode_promo_valid_3015 = input("Apakah kode promo valid? (y/t)  : ").strip().lower()
+
+# ---------- 4. Validasi izin kendali (satu rantai if-elif-else, tanpa nested-if) ----------
+print("\n--- KELAYAKAN PENGENDARA WAHANA ---")
+
+if paket_3015 == 3 and umur_3015 >= 17 and sim_3015 == 'y':
+    status_akses_3015 = "Anda sudah dewasa dan boleh mengendarai ATV sendiri."
+elif paket_3015 == 3 and umur_3015 >= 17 and sim_3015 != 'y':
+    status_akses_3015 = "Anda sudah dewasa tetapi tidak boleh bawa motor ATV (wajib didampingi instruktur)."
+elif paket_3015 == 3 and umur_3015 < 17 and sim_3015 == 'y':
+    status_akses_3015 = "Identitas tidak valid: Belum cukup umur memiliki SIM."
+elif paket_3015 == 3:
+    status_akses_3015 = "Anda belum cukup umur dan tidak boleh bawa motor ATV."
+elif umur_3015 >= 10:
+    status_akses_3015 = "Umur memenuhi syarat untuk wahana ini."
+else:
+    status_akses_3015 = "Maaf, umur minimal untuk wahana ini adalah 10 tahun."
+
+print("Status Akses:", status_akses_3015)
+
+# ---------- 5. Diskon bertingkat (multi-if terpisah) ----------
+subtotal_3015 = harga_satuan_3015 * jumlah_tiket_3015
+total_diskon_persen_3015 = 0
+
+if subtotal_3015 >= 200000:
+    total_diskon_persen_3015 += 10   # Diskon belanja besar
+
+if is_member_3015 in ['y', 'ya']:
+    total_diskon_persen_3015 += 5    # Diskon member
+
+if kode_promo_valid_3015 in ['y', 'ya']:
+    total_diskon_persen_3015 += 15   # Diskon voucher promo
+
+if jumlah_tiket_3015 >= 5:
+    total_diskon_persen_3015 += 5    # Diskon tambahan rombongan
+
+# ---------- 6. Total bayar + evaluasi (if-else) ----------
+nominal_diskon_3015 = subtotal_3015 * (total_diskon_persen_3015 / 100)
+total_bayar_3015 = subtotal_3015 - nominal_diskon_3015
+
+if total_bayar_3015 > 300000:
+    catatan_3015 = "Selamat! Anda berhak mendapatkan Souvenir Gratis."
+else:
+    catatan_3015 = "Terima kasih telah berkunjung."
+
+# ---------- Output ----------
+print("\n--- Rincian Pembayaran ---")
+print(f"Subtotal Belanja : Rp {subtotal_3015:,.0f}")
+print(f"Total Diskon     : {total_diskon_persen_3015}% (Rp {nominal_diskon_3015:,.0f})")
+print(f"Total Bayar      : Rp {total_bayar_3015:,.0f}")
+print(f"Catatan Layanan  : {catatan_3015}")
+print("Program Selesai")
