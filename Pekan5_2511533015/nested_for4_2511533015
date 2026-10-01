@@ -1,0 +1,49 @@
+tinggi_3015 = int (input ("Masukkan tinggi pola (bilangan genap, misal 10): "))
+
+if tinggi_3015 % 2 != 0:
+    print ("Tinggi pola harus bilangan genap.")
+else:
+    a_3015= tinggi_3015
+    c_3015= a_3015
+    lebar_3015 = (2 * tinggi_3015) - 2
+
+    for i_3015 in range (1, tinggi_3015 + 1):
+        b_3015 = c_3015 + 1\
+        
+        for j_3015 in range (1, lebar_3015 + 1):
+
+           # Baris atas dan bawah
+            if i_3015 == 1 or i_3015 == tinggi_3015:
+                if j_3015 == 1 or j_3015 == lebar_3015:
+                    print ("#", end="")
+
+                else:
+                    print ("=", end="")
+
+            # Baris isi
+            else:
+                if j_3015 == 1 or j_3015 == lebar_3015:
+                    print ("|", end="")
+                else:
+                    if j_3015 == c_3015:
+                        print ("<", end="")
+                    elif j_3015 == b_3015:
+                        print (">", end="")
+                    elif j_3015 == (lebar_3015 - c_3015):
+                        print ("<", end="")
+                    elif j_3015 == (lebar_3015 - c_3015 + 1):
+                        print (">", end="")
+                    elif j_3015 > b_3015 and j_3015 < (lebar_3015 -c_3015):
+                        print (".", end="")
+                    else:
+                        print (" ", end="")
+                
+        print () # pindah ke baris berikutnya
+
+        # Logika asli Java
+        a_3015 -= 2
+
+        if a_3015 <= 0:
+            c_3015 = (-a_3015) + 2
+        else:
+            c_3015 = a_3015

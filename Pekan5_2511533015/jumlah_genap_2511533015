@@ -1,0 +1,14 @@
+ulang_3015 = int (input("Masukkan nilai batas: "))
+
+jumlah_3015 = 0
+for i in range (1, ulang_3015 + 1):
+    if i % 2 == 0:
+        print (i, end=" ")
+        jumlah_3015 = jumlah_3015 + i
+
+        if i < ulang_3015:
+            print (" + ", end="")
+        else:
+            print (" = ", jumlah_3015, end="")
+print ()
+print ("Jumlah = ", jumlah_3015)
