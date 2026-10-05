@@ -1,0 +1,84 @@
+print ("PROGRAM JAM PASIR KRISTAL PALINDROMIK")
+n_3015 = int (input ("Masukkan ukuran skala jam pasir (N): "))
+
+# Bingkai atas
+print ("#", end ="")
+for b_3015 in range (4* n_3015 +5):
+    print ("=", end ="")
+print ("#", end = "")
+print ()
+
+# fase 1: jam pasir atas
+for baris_3015 in range (n_3015, 0, -1):
+    print ("|", end="")
+    print (" ", end="")
+
+    # spasi penyeimbang kiri
+    for sp_kiri_3015 in range (2 * (n_3015 - baris_3015)):
+        print (" ", end="")
+
+     # deret angka mundur
+    for angka_3015 in range (baris_3015, 0, -1):
+        print (angka_3015, end=" ")
+
+    # poros kristal
+    print ("<*>", end="")
+
+    # deret angka maju
+    for angka_3015 in range (1, baris_3015 + 1):
+        print (" ", end="")
+        print (angka_3015, end="")
+
+    # spasi penyeimbang kanan
+    for sp_kanan_3015 in range (2 * (n_3015 - baris_3015)):
+        print (" ", end="")
+
+    print (" ", end="")
+    print ("|", end="")
+    print ()
+
+# Fase 2: Poros titik pusat
+print ("|", end="")
+for sp_kiri_3015 in range (2 * n_3015 + 1):
+    print (" ", end="")
+print ("<*>", end="")
+for sp_kanan_3015 in range (2 * n_3015 + 1):
+    print (" ", end="")
+print ("|", end="")
+print ()
+
+# Fase 3: Jam pasir bawah
+for baris_3015 in range (1, n_3015 + 1):
+    print ("|", end="")
+    print (" ", end="")
+
+    # spasi penyeimbang kiri
+    for sp_kiri_3015 in range (2 * (n_3015 - baris_3015)):
+        print (" ", end="")
+
+    # deret angka mundur
+    for angka_3015 in range (baris_3015, 0, -1):
+        print (angka_3015, end=" ")
+
+    # poros kristal
+    print ("<*>", end="")
+
+    # deret angka maju
+    for angka_3015 in range (1, baris_3015 + 1):
+        print (" ", end="")
+        print (angka_3015, end="")
+
+    # spasi penyeimbang kanan
+    for sp_kanan_3015 in range (2 * (n_3015 - baris_3015)):
+        print (" ", end="")
+
+    print (" ", end="")
+    print ("|", end="")
+    print ()
+
+# Bingkai bawah
+print ("#", end="")
+for b_3015 in range (4 * n_3015 + 5):
+    print ("=", end="")
+print ("#", end="")
+print ()

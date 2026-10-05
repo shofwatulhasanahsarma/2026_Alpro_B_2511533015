@@ -1,0 +1,9 @@
+batas_3015 = int (input ("Masukkan tinggi segitiga (bilangan genap, misal 10): "))
+
+for i_3015 in range (1, batas_3015 + 1):
+
+    for j_3015 in range (batas_3015 - i_3015):
+        print("  ", end="")
+    for k_3015 in range (i_3015):
+        print(" * ", end=" ")
+    print () # pindah ke baris berikutnya
